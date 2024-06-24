@@ -10,4 +10,4 @@ writing other Rust-based libraries for interacting with character and block devi
 | ----------------- | --------------------------- | ----------------------- |
 | FreeBSD           | (in progress)               |                         |
 | Linux             | arm*, aarch64, i686, x86_64 | mips*, ppc*, sparc*     |
-| MacOS             | (in progress)               |                         |
+| MacOS             | arm64, x86_64               |                         |

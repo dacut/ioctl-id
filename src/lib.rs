@@ -1,7 +1,7 @@
 //! Provides constant functions to compute for `ioctl(2)` identifiers.
 //!
-//! Currently, this only supports Linux. The long term goal is to support `ioctl` identifiers for other Unix-like
-//! operating systems, including FreeBSD and macOS.
+//! Currently, this supports Linux and macOS. The long term goal is to support `ioctl` identifiers for other BSD
+//! variants.
 //!
 //! ## Usage Notes
 //! [`IoctlId`] is an alias for the type to pass into the `ioctl(2)` request. This is either a `u32` or `u64`, depending
@@ -39,8 +39,15 @@ mod linux;
 #[cfg(target_os = "linux")]
 pub use linux::*;
 
+#[cfg(target_os = "macos")]
+mod macos;
+
+#[cfg(target_os = "macos")]
+pub use macos::*;
+
 #[cfg(all(
     test,
+    target_os = "linux",
     not(any(
         target_arch = "mips",
         target_arch = "mips64",
@@ -50,4 +57,7 @@ pub use linux::*;
         target_arch = "sparc64"
     ))
 ))]
-mod ccompat_tests_generic;
+mod ccompat_tests_linux_generic;
+
+#[cfg(all(test, target_os = "macos"))]
+mod ccompat_tests_macos;
