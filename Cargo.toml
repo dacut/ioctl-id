@@ -2,6 +2,7 @@
 name = "ioctl-id"
 edition = "2021"
 authors = ["David Cuthbert <dacut@kanga.org>"]
+description = "Rust identifiers for `ioctl(2)` calls on Unix-like systems."
 homepage = "https://github.com/dacut/ioctl-id"
 readme = "README.md"
 license = "Apache-2.0"
